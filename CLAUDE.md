@@ -27,5 +27,6 @@ public. Business and client work lives in a separate private repo.
   content change.
 
 ## Deploy
-Cloudflare Pages, connected to this repo. Framework preset None, no build command, output
-directory is the repo root. Push to `main` to deploy.
+Cloudflare Workers Static Assets, connected to this repo. `wrangler.jsonc` serves `public/`
+with no build step (deploy command `npx wrangler deploy`). Push to `main` to deploy. Servable
+files live in `public/`; repo-root files (README, CLAUDE, wrangler) are not served.
