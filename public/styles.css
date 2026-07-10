@@ -228,6 +228,7 @@ section { padding-top:80px; padding-bottom:80px; }
 /* Even vertical rhythm: one consistent ~75px gap between every section. Applied via
    .even-stack on <main> (AI audit and About pages). Homepage keeps its own rhythm. */
 .even-stack > section { padding-top:38px; padding-bottom:38px; }
+.even-stack > section:last-child { padding-bottom:80px; }  /* match homepage gap to footer */
 .even-stack > .page-hero { padding-top:80px; padding-bottom:38px; }
 .even-stack .aside-warm { margin-top:0; }  /* audit: it was pushed down an extra 40px */
 .even-stack .origin { margin-top:76px; }   /* about: match the between-section gap */
