@@ -16,6 +16,8 @@
   --surface-card:var(--white); --surface-inverse:var(--teal-700);
   --border-subtle:rgba(20,36,43,0.12); --border-strong:rgba(20,36,43,0.22);
   --link:var(--sea-500);
+  --nav-bg:rgba(242,247,242,0.86);
+  color-scheme:light;
 
   --font-sans:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
@@ -23,6 +25,23 @@
   --radius-md:8px; --radius-lg:9px; --radius-pill:999px;
   --shadow-md:0 6px 24px rgba(8,59,81,0.10);
 }
+
+/* Dark theme: remap the semantic tokens only. Teal bands (surface-inverse) and the
+   footer (teal-900) stay teal on purpose, they punctuate the dark page the same way. */
+:root[data-theme="dark"] {
+  /* Deep Marine: base is a very dark teal-ink, not neutral black, so dark mode still
+     reads as Terenzo. Warm ochre/terracotta accents carry through the component tokens. */
+  --text-strong:#EAF1EE; --text-body:#C9D6D2; --text-muted:#88A099;
+  --surface-page:#06171E; --surface-sunken:#0B242E; --surface-card:#0E2A35;
+  --surface-warm:#241A12;
+  /* band panels lift from the marine base with teal, staying subtle not loud */
+  --surface-inverse:#103038;
+  --border-subtle:rgba(142,224,192,0.12); --border-strong:rgba(142,224,192,0.24);
+  --link:var(--glass-300); --nav-bg:rgba(6,23,30,0.86);
+  color-scheme:dark;
+}
+/* teal-700 body text is unreadable on a dark card, use the bright accent */
+:root[data-theme="dark"] .btn-secondary { color:var(--brand-accent); }
 
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -56,7 +75,7 @@ a { color:var(--link); text-underline-offset:2px; }
 .btn-sm { padding:9px 15px; font-size:14px; }
 
 /* Nav */
-.nav { position:sticky; top:0; z-index:20; background:rgba(242,247,242,0.86);
+.nav { position:sticky; top:0; z-index:20; background:var(--nav-bg);
   backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border-subtle); }
 .nav .wrap { display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px; }
@@ -66,10 +85,18 @@ a { color:var(--link); text-underline-offset:2px; }
 .nav nav { display:flex; align-items:center; gap:28px; }
 .nav nav a:not(.btn) { font-size:15px; font-weight:500; color:var(--text-muted); text-decoration:none; }
 .nav nav a:not(.btn):hover { color:var(--brand-primary); }
+/* Theme toggle: geometric half-fill contrast mark, not a pictographic icon */
+.theme-toggle { width:34px; height:34px; padding:0; border-radius:var(--radius-pill);
+  border:1px solid var(--border-strong); background:var(--surface-card); color:var(--text-strong);
+  cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
+  transition:border-color 150ms ease,background 150ms ease; flex-shrink:0; }
+.theme-toggle:hover { border-color:var(--brand-secondary); }
+.theme-toggle::before { content:""; width:15px; height:15px; border-radius:50%;
+  border:1.5px solid currentColor; background:linear-gradient(90deg,currentColor 0 50%,transparent 50%); }
 
 /* Sections: vertical rhythm lives here, longhand so .wrap cannot clobber it. */
 section { padding-top:80px; padding-bottom:80px; }
-.tint { background:var(--surface-sunken); }
+.tint { padding-top:32px; padding-bottom:32px; }
 .section-head { max-width:640px; }
 .section-head h2 { margin-top:16px; }
 .relative { position:relative; overflow:hidden; }
@@ -100,7 +127,7 @@ section { padding-top:80px; padding-bottom:80px; }
 .card p { font-size:15.5px; color:var(--text-muted); }
 
 /* Teal band: who it's for */
-.band { background:var(--surface-inverse); color:var(--text-on-dark); }
+.band { color:var(--text-on-dark); padding-top:32px; padding-bottom:32px; }
 .band .inner { position:relative; overflow:hidden; display:grid; grid-template-columns:1fr 1fr;
   gap:56px; align-items:center; padding-top:88px; padding-bottom:88px; }
 .band .watermark { position:absolute; bottom:-120px; left:-90px; width:420px; height:auto; color:rgba(143,224,192,0.10); }
@@ -114,10 +141,23 @@ section { padding-top:80px; padding-bottom:80px; }
 .fits .t { font-size:17px; line-height:1.5; }
 
 /* Band sections manage their own vertical space via the inner element. */
-.band, .photo-band { padding-top:0; padding-bottom:0; }
+.photo-band { padding-top:0; padding-bottom:0; }
+
+/* Contained panels: colored / image sections sit as rounded panels on the shared page
+   background, inset from the viewport edges instead of running full-bleed. */
+.tint > .wrap,
+.band > .wrap {
+  width:calc(100% - 2 * var(--gutter));
+  border-radius:var(--radius-lg); border:1px solid var(--border-subtle);
+}
+.tint > .wrap { background:var(--surface-sunken); padding-top:60px; padding-bottom:60px; }
+.band > .wrap { background:var(--surface-inverse); }  /* .inner already pads 88px top/bottom */
+.tint .wm { display:none; }  /* corner watermark landed in the gutter once boxed, drop it */
 
 /* Photo band: Ligurian coast, restrained, carries the promise line */
-.photo-band { position:relative; min-height:380px; display:flex; align-items:center; overflow:hidden; background:var(--surface-inverse); }
+.photo-band { position:relative; min-height:380px; display:flex; align-items:center; overflow:hidden;
+  background:var(--surface-inverse); width:calc(100% - 2 * var(--gutter)); max-width:var(--container);
+  margin:32px auto; border-radius:var(--radius-lg); }
 .photo-band img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 32%; filter:saturate(0.9) brightness(0.62); }
 .photo-band .overlay { position:absolute; inset:0; background:linear-gradient(90deg, rgba(8,59,81,0.82), rgba(8,59,81,0.40)); }
 .photo-band .content { position:relative; color:#fff; padding-top:72px; padding-bottom:72px; }
@@ -166,6 +206,10 @@ section { padding-top:80px; padding-bottom:80px; }
 .feature .num { font-family:var(--font-mono); font-size:13px; color:var(--brand-secondary); }
 .feature h3 { margin:10px 0 8px; }
 .feature p { font-size:15.5px; color:var(--text-muted); }
+
+/* Card surfaces: the faint border + near-zero shadow bled into the off-white page.
+   Give them a real edge so they lift off the background (helps most in light mode). */
+.card, .person, .feature { border-color:var(--border-strong); box-shadow:0 2px 12px rgba(8,59,81,0.08); }
 
 /* Warm callout (pricing signal / aside) */
 .aside-warm { margin-top:40px; background:var(--surface-warm); border-radius:var(--radius-md); padding:32px 36px; max-width:46rem; }

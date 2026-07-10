@@ -71,6 +71,10 @@
   ]
 }
 </script>
+<script>
+(function(){var t=localStorage.getItem('theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;})();
+function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('theme',t);}
+</script>
 </head>
 <body>
 
@@ -84,6 +88,7 @@
       <a href="index.html#what">What we do</a>
       <a href="ai-audit.html">AI audit</a>
       <a href="about.html">About</a>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
       <a class="btn btn-primary btn-sm" href="index.html#contact">Book a call</a>
     </nav>
   </div>
