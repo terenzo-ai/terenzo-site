@@ -123,7 +123,7 @@ section { padding-top:80px; padding-bottom:80px; }
   border-radius:var(--radius-md); padding:28px; display:flex; flex-direction:column; min-height:230px;
   box-shadow:0 1px 2px rgba(8,59,81,0.04); }
 .card .num { font-family:var(--font-mono); font-size:13px; color:var(--brand-secondary); letter-spacing:0.04em; }
-.card h3 { margin:auto 0 10px; }
+.card h3 { margin:18px 0 10px; }
 .card p { font-size:15.5px; color:var(--text-muted); }
 
 /* Teal band: who it's for */
@@ -162,7 +162,7 @@ section { padding-top:80px; padding-bottom:80px; }
 .photo-band .overlay { position:absolute; inset:0; background:linear-gradient(90deg, rgba(8,59,81,0.82), rgba(8,59,81,0.40)); }
 .photo-band .content { position:relative; color:#fff; padding-top:72px; padding-bottom:72px; }
 .photo-band .content .eyebrow { color:var(--brand-accent); }
-.photo-band .content h2 { color:#fff; margin-top:14px; max-width:20rem; }
+.photo-band .content h2 { color:#fff; max-width:20rem; }
 .photo-band .content p { margin-top:16px; max-width:30rem; font-size:18px; color:rgba(242,247,242,0.86); }
 
 /* Founders */
@@ -225,6 +225,13 @@ section { padding-top:80px; padding-bottom:80px; }
 .page-hero { padding-top:80px; padding-bottom:24px; }
 .page-hero .lead { margin-top:20px; max-width:40rem; font-size:19px; color:var(--text-body); }
 
+/* Even vertical rhythm: one consistent ~75px gap between every section. Applied via
+   .even-stack on <main> (AI audit and About pages). Homepage keeps its own rhythm. */
+.even-stack > section { padding-top:38px; padding-bottom:38px; }
+.even-stack > .page-hero { padding-top:80px; padding-bottom:38px; }
+.even-stack .aside-warm { margin-top:0; }  /* audit: it was pushed down an extra 40px */
+.even-stack .origin { margin-top:76px; }   /* about: match the between-section gap */
+
 /* FAQ */
 .faq { max-width:48rem; margin-top:40px; }
 .faq .qa { padding:26px 0; border-top:1px solid var(--border-subtle); }
@@ -259,3 +266,9 @@ section { padding-top:80px; padding-bottom:80px; }
   .nav nav { flex-wrap:wrap; }
   .foot .legal .wrap { flex-direction:column; gap:8px; }
 }
+
+/* One consistent gap between every eyebrow and the heading under it, site-wide.
+   Placed last so it wins over the older per-section values. */
+.eyebrow + h1,
+.eyebrow + h2,
+.eyebrow + h3 { margin-top:16px; }
