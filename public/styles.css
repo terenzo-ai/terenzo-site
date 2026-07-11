@@ -1,7 +1,7 @@
 /* Terenzo site styles: "Harbor Light".
    One light in the dark: a soft harbor beacon on a hairline horizon, monospace
    instrument annotations, quiet hairline structure, terracotta as the single warm
-   accent. Dark-first (the harbor at night); light theme is the same harbor at noon.
+   accent. Single theme: the harbor at night.
    Tokens mirrored from brand/design-system so the deployed site is self-contained. */
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
 
@@ -14,50 +14,29 @@
 
   --brand-primary:var(--teal-700); --brand-primary-deep:var(--teal-900);
   --brand-secondary:var(--sea-500); --brand-accent:var(--glass-300);
-  --text-strong:var(--ink-900); --text-body:#2C3E44; --text-muted:var(--stone-700);
-  --text-on-dark:#EDF3F0;
-  --surface-page:var(--paper-100); --surface-sunken:var(--paper-200);
-  --surface-card:var(--white); --surface-inverse:var(--teal-700);
-  --border-subtle:rgba(16,29,34,0.13); --border-strong:rgba(16,29,34,0.30);
-  --link:#3E8A7C;
-  --nav-bg:rgba(244,246,241,0.88);
-  color-scheme:light;
-
-  /* Instrument layer */
-  --ann:var(--stone-700);        /* annotation ink: mono labels, captions */
-  --ann-accent:#3E8A7C;          /* annotation accent: indices, readout values */
-  --warm:var(--terracotta-600);  /* the one warm accent (CTA, pricing, origin) */
-  --warm-hover:#8C4626;
-  --beacon-a:rgba(78,166,153,0.12); --beacon-b:rgba(11,79,108,0.06);
-  --horizon:rgba(16,29,34,0.18);
-  --beam:rgba(11,79,108,0.11);
-  --core-fill:var(--teal-700);
-  --core-halo:rgba(78,166,153,0.45); --core-halo-wide:rgba(78,166,153,0.16);
-
-  --font-sans:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-  --container:1200px; --gutter:56px;
-}
-
-/* Dark theme: the harbor at night. */
-:root[data-theme="dark"] {
   --text-strong:#EDF3F0; --text-body:#B9C9C4; --text-muted:#71877F;
+  --text-on-dark:#EDF3F0;
   --surface-page:#040D12; --surface-sunken:#0A1E27; --surface-card:#0D2530;
-  --surface-warm:#22150D;
-  --surface-inverse:#0C2833;
+  --surface-warm:#22150D; --surface-inverse:#0C2833;
   --border-subtle:rgba(143,224,192,0.13); --border-strong:rgba(143,224,192,0.26);
-  --link:var(--glass-300); --nav-bg:rgba(4,13,18,0.88);
+  --link:var(--glass-300);
+  --nav-bg:rgba(4,13,18,0.88);
   color-scheme:dark;
 
-  --ann:#71877F;
-  --ann-accent:var(--glass-300);
-  --warm:var(--terracotta-500);
+  /* Instrument layer */
+  --ann:#71877F;                    /* annotation ink: mono labels, captions */
+  --ann-accent:var(--glass-300);    /* annotation accent: indices, readout values */
+  --warm:var(--terracotta-500);     /* the one warm accent (CTA, pricing, origin) */
   --warm-hover:var(--terracotta-600);
   --beacon-a:rgba(143,224,192,0.26); --beacon-b:rgba(78,166,153,0.16);
   --horizon:rgba(143,224,192,0.30);
   --beam:rgba(143,224,192,0.10);
   --core-fill:#F2FBF7;
   --core-halo:rgba(143,224,192,0.55); --core-halo-wide:rgba(143,224,192,0.20);
+
+  --font-sans:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --container:1200px; --gutter:56px;
 }
 
 /* ---------- Base ---------- */
@@ -80,8 +59,7 @@ h2 { font-size:clamp(1.9rem,3.4vw,2.8rem); line-height:1.08; letter-spacing:-0.0
 h3 { font-size:1.3rem; line-height:1.25; letter-spacing:-0.015em; }
 p { margin:0; }
 a { color:var(--link); text-underline-offset:2px; }
-.hl { color:var(--brand-secondary); }
-:root[data-theme="dark"] .hl { color:var(--glass-300); }
+.hl { color:var(--glass-300); }
 .mono { font-family:var(--font-mono); }
 .lead { font-size:18.5px; line-height:1.7; color:var(--text-body); }
 
@@ -114,8 +92,7 @@ a { color:var(--link); text-underline-offset:2px; }
   border-bottom:1px solid var(--border-subtle); }
 .nav .wrap { display:flex; align-items:center; justify-content:space-between; padding-top:18px; padding-bottom:18px; }
 .brand { display:inline-flex; align-items:center; gap:11px; text-decoration:none; color:var(--text-strong); }
-.brand .mark { width:26px; height:auto; color:var(--brand-primary); }
-:root[data-theme="dark"] .brand .mark { color:var(--glass-300); }
+.brand .mark { width:26px; height:auto; color:var(--glass-300); }
 .brand .wordmark { font-weight:700; font-size:22px; letter-spacing:-0.01em; }
 .nav nav { display:flex; align-items:center; gap:30px; }
 .nav nav a:not(.btn) { font-family:var(--font-mono); font-size:11.5px; font-weight:500;
@@ -124,13 +101,6 @@ a { color:var(--link); text-underline-offset:2px; }
 /* Instrument line: 2px scroll-progress rule along the bottom edge of the nav. */
 .nav-progress { position:absolute; left:0; bottom:-1px; height:2px; width:100%;
   background:var(--ann-accent); transform:scaleX(0); transform-origin:left center; }
-.theme-toggle { width:34px; height:34px; padding:0; border-radius:999px;
-  border:1px solid var(--border-strong); background:transparent; color:var(--text-strong);
-  cursor:pointer; display:inline-flex; align-items:center; justify-content:center;
-  transition:border-color 150ms ease; flex-shrink:0; }
-.theme-toggle:hover { border-color:var(--ann-accent); }
-.theme-toggle::before { content:""; width:15px; height:15px; border-radius:50%;
-  border:1.5px solid currentColor; background:linear-gradient(90deg,currentColor 0 50%,transparent 50%); }
 
 /* ---------- Motion system ----------
    JS stamps .js on <html>. Without JS everything is fully visible; with JS and motion
@@ -310,13 +280,9 @@ section { padding-top:100px; padding-bottom:100px; }
 /* ---------- Warm callout (pricing): the terracotta moment ---------- */
 .aside-warm { margin-top:0; background:var(--surface-warm); border:1px solid var(--border-strong);
   padding:38px 42px; max-width:48rem; }
-.aside-warm .station { color:var(--warm); }
-.aside-warm .station .no { color:var(--warm); }
+.aside-warm .station, .aside-warm .station .no { color:var(--ochre-300); }
 .aside-warm .station .rule { background:rgba(161,84,47,0.3); }
-.aside-warm h3 { margin:18px 0 10px; color:var(--warm); }
-:root[data-theme="dark"] .aside-warm h3 { color:var(--ochre-300); }
-:root[data-theme="dark"] .aside-warm .station,
-:root[data-theme="dark"] .aside-warm .station .no { color:var(--ochre-300); }
+.aside-warm h3 { margin:18px 0 10px; color:var(--ochre-300); }
 .aside-warm p { color:var(--text-body); font-size:16.5px; }
 
 /* ---------- FAQ ---------- */
@@ -338,15 +304,12 @@ section { padding-top:100px; padding-bottom:100px; }
 .origin img { width:100%; height:100%; object-fit:cover; display:block; min-height:220px; filter:saturate(0.9); }
 .origin .photo .caption { position:absolute; left:12px; bottom:10px; color:rgba(237,243,240,0.85); }
 .origin .note { padding:38px 42px; background:var(--surface-warm); display:flex; flex-direction:column; justify-content:center; gap:12px; }
-.origin .note .station, .origin .note .station .no { color:var(--warm); }
+.origin .note .station, .origin .note .station .no { color:var(--ochre-300); }
 .origin .note .station .rule { background:rgba(161,84,47,0.3); }
-:root[data-theme="dark"] .origin .note .station,
-:root[data-theme="dark"] .origin .note .station .no { color:var(--ochre-300); }
 .origin .note p { font-size:16.5px; color:var(--text-body); max-width:38rem; }
 
 /* ---------- Footer: the chart legend ---------- */
-.foot { background:var(--teal-900); color:var(--text-on-dark); }
-:root[data-theme="dark"] .foot { background:#020A0E; border-top:1px solid var(--border-subtle); }
+.foot { background:#020A0E; color:var(--text-on-dark); border-top:1px solid var(--border-subtle); }
 .foot .top { display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-top:76px; padding-bottom:60px; }
 .foot .blurb { margin-top:20px; max-width:20rem; font-size:14.5px; line-height:1.6; color:rgba(237,243,240,0.6); }
 .foot h4 { font-family:var(--font-mono); font-weight:500; font-size:10.5px; letter-spacing:0.24em;
