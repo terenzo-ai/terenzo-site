@@ -34,6 +34,7 @@
 (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.dataset.theme=t;})();
 function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=t;localStorage.setItem('theme',t);}
 </script>
+<script src="site.js" defer></script>
 </head>
 <body>
 
@@ -51,132 +52,155 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
       <a class="btn btn-primary btn-sm" href="#contact">Book a call</a>
     </nav>
   </div>
+  <span class="nav-progress" aria-hidden="true"></span>
 </header>
 
 <main>
-  <!-- Hero -->
-  <section id="top" class="wrap hero">
-    <div>
-      <p class="eyebrow">Operations and AI advisory</p>
-      <h1>We bring order to how your <span class="hl">business runs</span>.</h1>
-      <p class="lead">Terenzo is an AI and technology operations consulting firm. We help
+  <!-- Hero: one light in the dark -->
+  <section id="top" class="hero">
+    <div class="beacon" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="sweep"></div>
+      <div class="core"></div>
+      <div class="horizon"></div>
+    </div>
+    <div class="content wrap">
+      <p class="kicker reveal"><b>Terenzo</b> &middot; Operations and AI advisory</p>
+      <h1 class="reveal d1">We bring order to how your business runs.</h1>
+      <p class="lead reveal d2">Terenzo is an AI and technology operations consulting firm. We help
         mid-market companies, 200 to 2000 employees, turn AI into measurable operating
         improvements, working directly with CFOs and COOs. We streamline the systems,
         hand-offs, and decisions, and put AI to work only where it earns its place.</p>
-      <div class="actions">
+      <div class="actions reveal d3">
         <a class="btn btn-primary" href="#contact">Book a call</a>
-        <a class="btn btn-secondary" href="#what">See how we work</a>
+        <a class="link-quiet" href="#what">See how we work</a>
       </div>
-      <p class="cred">Built by operators from the enterprise SaaS, AWS, Microsoft, and Salesforce world.</p>
+      <p class="cred reveal d3">Built by operators from the enterprise SaaS, AWS, Microsoft, and Salesforce world.</p>
+      <div class="readout reveal d3" role="presentation">
+        <div><span class="k">Position</span><span class="v">44.0801&deg; N, 9.8846&deg; E</span></div>
+        <div><span class="k">Client range</span><span class="v"><span class="count">200</span> to <span class="count">2000</span> employees</span></div>
+        <div><span class="k">Reports to</span><span class="v">CFO &middot; COO</span></div>
+        <div><span class="k">Method</span><span class="v">Diagnose &middot; Prescribe &middot; Maintain</span></div>
+      </div>
     </div>
-    <aside class="promise">
-      <svg class="watermark" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
-      <p class="kicker">The promise</p>
-      <p class="line">Operational clarity,<br />built to last.</p>
-    </aside>
   </section>
 
-  <!-- What we do -->
-  <section id="what" class="tint relative">
-    <svg class="wm" style="top:-30px;right:-40px" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
+  <!-- What we do: the ledger -->
+  <section id="what">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">What we do</p>
-        <h2>Three places where order pays for itself.</h2>
+        <p class="station reveal"><span class="no">Fig. 01</span><span class="rule"></span>What we do</p>
+        <h2 class="reveal d1">Three places where order pays for itself.</h2>
       </div>
-      <div class="cards">
-        <article class="card">
-          <p class="num">01</p>
-          <h3>Operating systems</h3>
-          <p>We map how work actually moves through your business, then rebuild the systems
-            and hand-offs so nothing falls between teams.</p>
-        </article>
-        <article class="card">
-          <p class="num">02</p>
-          <h3>Decisions and reporting</h3>
-          <p>Clear numbers, owned by someone, arriving on time. We fix the reporting layer so
-            leaders decide on facts, not folklore.</p>
-        </article>
-        <article class="card">
-          <p class="num">03</p>
-          <h3>AI where it earns it</h3>
-          <p>No theatre. We deploy AI on the few processes where it pays for itself, and leave
-            the rest of the org calmly alone.</p>
-        </article>
-      </div>
+      <ol class="ledger">
+        <li class="reveal">
+          <span class="ix" aria-hidden="true">01</span>
+          <div>
+            <h3>Operating systems</h3>
+            <p>We map how work actually moves through your business, then rebuild the systems
+              and hand-offs so nothing falls between teams.</p>
+          </div>
+          <span class="coord tag" aria-hidden="true">Systems / Hand-offs</span>
+        </li>
+        <li class="reveal d1">
+          <span class="ix" aria-hidden="true">02</span>
+          <div>
+            <h3>Decisions and reporting</h3>
+            <p>Clear numbers, owned by someone, arriving on time. We fix the reporting layer so
+              leaders decide on facts, not folklore.</p>
+          </div>
+          <span class="coord tag" aria-hidden="true">Reporting / Ownership</span>
+        </li>
+        <li class="reveal d2">
+          <span class="ix" aria-hidden="true">03</span>
+          <div>
+            <h3>AI where it earns it</h3>
+            <p>No theatre. We deploy AI on the few processes where it pays for itself, and leave
+              the rest of the org calmly alone.</p>
+          </div>
+          <span class="coord tag" aria-hidden="true">Deployed / Measured</span>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- Who it's for -->
-  <section id="who" class="band">
-    <div class="wrap inner">
-      <svg class="watermark" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
-      <div>
-        <p class="eyebrow">Who it's for</p>
-        <h2>Built for the people who carry the business.</h2>
-        <p class="lead">Terenzo is the firm a CFO or COO hires when the operating model has
-          outgrown the spreadsheets. Senior, calm, accountable. In and out with the mess
-          sorted, not a year-long engagement that never ends.</p>
+  <!-- Who it's for: the chart panel -->
+  <section id="who" class="panel-dark">
+    <div class="wrap">
+      <div class="inner reveal">
+        <svg class="watermark" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
+        <div>
+          <p class="station"><span class="no">Fig. 02</span><span class="rule"></span>Who it's for</p>
+          <h2>Built for the people who carry the business.</h2>
+          <p class="lead">Terenzo is the firm a CFO or COO hires when the operating model has
+            outgrown the spreadsheets. Senior, calm, accountable. In and out with the mess
+            sorted, not a year-long engagement that never ends.</p>
+        </div>
+        <ul class="fits">
+          <li><span class="n">FIT 01</span><span class="t">You run finance or operations and own the number at the end.</span></li>
+          <li><span class="n">FIT 02</span><span class="t">You are mid-market, 200 to 2000 people. Big enough to be tangled, small enough to fix.</span></li>
+          <li><span class="n">FIT 03</span><span class="t">You have been burned by tools that promised transformation and delivered dashboards.</span></li>
+        </ul>
       </div>
-      <ul class="fits">
-        <li><span class="n">01</span><span class="t">You run finance or operations and own the number at the end.</span></li>
-        <li><span class="n">02</span><span class="t">You are mid-market, 200 to 2000 people. Big enough to be tangled, small enough to fix.</span></li>
-        <li><span class="n">03</span><span class="t">You have been burned by tools that promised transformation and delivered dashboards.</span></li>
-      </ul>
     </div>
   </section>
 
   <!-- Founders -->
-  <section id="founders" class="wrap">
-    <p class="eyebrow">Founders</p>
-    <h2>Two partners, on the hook with you.</h2>
-    <div class="people">
-      <article class="person">
-        <img class="avatar" src="assets/drew-jennings.jpg" width="56" height="56" alt="Drew Jennings" />
-        <div>
-          <p class="name">Drew Jennings</p>
-          <p class="role">Partner, operations and delivery</p>
-          <p>Leads how Terenzo delivers. More than a decade in enterprise SaaS revenue and
-            partnerships, a Salesforce implementation partner, with an AWS Solutions Architect
-            certification and a JD from the University of Washington School of Law.</p>
-          <a class="social" href="https://www.linkedin.com/in/drewje/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </article>
-      <article class="person">
-        <img class="avatar" src="assets/gordie-flowers.jpg" width="56" height="56" alt="Gordie Flowers" />
-        <div>
-          <p class="name">Gordie Flowers</p>
-          <p class="role">Partner, growth and partnerships</p>
-          <p>Owns the front of the firm: clients and partnerships. He has spent his career in
-            enterprise cloud and AI, with experience across AWS and Microsoft.</p>
-          <a class="social" href="https://www.linkedin.com/in/gordieflowers/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </article>
+  <section id="founders">
+    <div class="wrap">
+      <p class="station reveal"><span class="no">Fig. 03</span><span class="rule"></span>Founders</p>
+      <h2 class="reveal d1">Two partners, on the hook with you.</h2>
+      <div class="people">
+        <article class="person reveal">
+          <img class="avatar" src="assets/drew-jennings.jpg" width="76" height="76" alt="Drew Jennings" />
+          <div>
+            <p class="name">Drew Jennings</p>
+            <p class="role">Partner, operations and delivery</p>
+            <p>Leads how Terenzo delivers. More than a decade in enterprise SaaS revenue and
+              partnerships, a Salesforce implementation partner, with an AWS Solutions Architect
+              certification and a JD from the University of Washington School of Law.</p>
+            <a class="social" href="https://www.linkedin.com/in/drewje/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </article>
+        <article class="person reveal d1">
+          <img class="avatar" src="assets/gordie-flowers.jpg" width="76" height="76" alt="Gordie Flowers" />
+          <div>
+            <p class="name">Gordie Flowers</p>
+            <p class="role">Partner, growth and partnerships</p>
+            <p>Owns the front of the firm: clients and partnerships. He has spent his career in
+              enterprise cloud and AI, with experience across AWS and Microsoft.</p>
+            <a class="social" href="https://www.linkedin.com/in/gordieflowers/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
   <!-- Photo band: the promise over the San Terenzo castello -->
-  <section class="photo-band">
-    <img src="assets/castello-san-terenzo-best.jpg" alt="The San Terenzo castello at dusk on the Ligurian coast" />
-    <div class="overlay"></div>
-    <div class="wrap content">
-      <p class="eyebrow">The promise</p>
+  <section class="photo-band reveal">
+    <img src="assets/castello-san-terenzo-best.jpg" data-parallax alt="The San Terenzo castello at dusk on the Ligurian coast" />
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="content">
+      <p class="station"><span class="no">Fig. 04</span><span class="rule"></span>The promise</p>
       <h2>Operational clarity, built to last.</h2>
       <p>We come in senior, sort the mess, and hand back systems your team can run without
         us. No year-long engagement that never ends.</p>
     </div>
+    <p class="coord caption" aria-hidden="true">44.0801&deg; N, 9.8846&deg; E &middot; San Terenzo, Gulf of Poets</p>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="wrap">
-    <div class="contact-inner">
-      <p class="eyebrow">Contact</p>
-      <h2>Start with a conversation.</h2>
-      <p class="lead">Tell us where the operating model is straining. We will tell you whether
-        an AI operations audit is the right next step, and what it would find.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="mailto:hello@terenzo.ai">Book a call</a>
-        <a class="btn btn-secondary" href="mailto:hello@terenzo.ai">hello@terenzo.ai</a>
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+        <p class="station reveal"><span class="no">Fig. 05</span><span class="rule"></span>Contact</p>
+        <h2 class="reveal d1">Start with a conversation.</h2>
+        <p class="lead reveal d2">Tell us where the operating model is straining. We will tell you whether
+          an AI operations audit is the right next step, and what it would find.</p>
+        <div class="actions reveal d3">
+          <a class="btn btn-primary" href="mailto:hello@terenzo.ai">Book a call</a>
+          <a class="btn btn-secondary" href="mailto:hello@terenzo.ai">hello@terenzo.ai</a>
+        </div>
       </div>
     </div>
   </section>
@@ -212,8 +236,8 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
   </div>
   <div class="legal">
     <div class="wrap">
-      <span>© 2026 Terenzo</span>
-      <span class="mono">San Terenzo, Gulf of Poets</span>
+      <span>&copy; 2026 Terenzo</span>
+      <span>San Terenzo, Gulf of Poets &middot; 44.0801&deg; N, 9.8846&deg; E</span>
     </div>
   </div>
 </footer>
