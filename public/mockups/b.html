@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Direction B: Ledger | Terenzo hero mockup</title>
+<meta name="robots" content="noindex" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap");
+
+:root {
+  --paper:#F4F6F1; --paper-2:#EBEEE7; --card:#FFFFFF;
+  --ink:#101D22; --body:#2C3E44; --muted:#5F736E;
+  --teal:#0B4F6C; --teal-deep:#083B51; --sea:#3E8A7C; --glass:#8FE0C0;
+  --terra:#A1542F;
+  --line:rgba(16,29,34,0.16); --line-strong:rgba(16,29,34,0.34);
+  --sans:"Hanken Grotesk",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+  --serif:"Instrument Serif",Georgia,serif;
+}
+* { box-sizing:border-box; margin:0; }
+body { background:var(--paper); color:var(--body); font-family:var(--sans);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1280px; margin:0 auto; padding:0 64px; }
+
+/* Nav */
+.nav { border-bottom:1px solid var(--line-strong); }
+.nav .wrap { display:flex; align-items:center; justify-content:space-between; padding:22px 64px; }
+.brand { display:inline-flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); }
+.brand svg { width:27px; color:var(--teal); }
+.brand b { font-weight:700; font-size:22px; letter-spacing:-0.01em; }
+.nav nav { display:flex; align-items:center; gap:34px; }
+.nav nav a { font-size:14.5px; font-weight:500; color:var(--muted); text-decoration:none; }
+.nav nav a:hover { color:var(--ink); }
+.cta-sm { font-family:var(--mono); font-size:12px; font-weight:600; letter-spacing:0.12em;
+  text-transform:uppercase; color:#fff !important; background:var(--teal); padding:11px 18px; }
+.cta-sm:hover { background:var(--teal-deep); }
+
+/* Hero: the typeset cover */
+.hero { position:relative; overflow:hidden; border-bottom:1px solid var(--line-strong); }
+.hero .wrap { position:relative; padding-top:64px; padding-bottom:0; }
+/* Giant cropped battlement, structural, right edge */
+.mark-bg { position:absolute; right:-230px; bottom:150px; width:820px; color:#E9EDE4; z-index:0; }
+.masthead { display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.2em;
+  text-transform:uppercase; color:var(--muted); padding-bottom:18px;
+  border-bottom:1px solid var(--line-strong); position:relative; z-index:1; }
+.masthead .r { color:var(--sea); }
+h1 { position:relative; z-index:1; margin-top:56px;
+  font-size:clamp(3.4rem,8.4vw,7.6rem); line-height:0.96; letter-spacing:-0.04em;
+  font-weight:800; color:var(--ink); text-wrap:balance; }
+h1 .serif { font-family:var(--serif); font-style:italic; font-weight:400;
+  letter-spacing:-0.01em; color:var(--teal); }
+.sub { position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,44rem) 1fr;
+  gap:48px; margin-top:56px; align-items:end; }
+.lead { font-size:19px; line-height:1.65; color:var(--body); }
+.actions { display:flex; gap:14px; justify-content:flex-end; align-items:center; flex-wrap:wrap; }
+.btn { font-family:var(--mono); font-size:13px; font-weight:600; letter-spacing:0.12em;
+  text-transform:uppercase; text-decoration:none; padding:17px 28px; }
+.btn-solid { background:var(--teal); color:#fff; }
+.btn-solid:hover { background:var(--teal-deep); }
+.btn-ghost { color:var(--ink); border:1px solid var(--line-strong); }
+.btn-ghost:hover { border-color:var(--teal); color:var(--teal); }
+
+/* Spec-sheet readout */
+.readout { position:relative; z-index:1; margin-top:72px; border:1px solid var(--line-strong);
+  border-bottom:none; display:grid; grid-template-columns:repeat(4,1fr); background:var(--card); }
+.readout > div { padding:22px 26px; }
+.readout > div + div { border-left:1px solid var(--line); }
+.readout .k { display:block; font-family:var(--mono); font-size:10px; font-weight:500;
+  letter-spacing:0.24em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+.readout .v { display:block; font-family:var(--mono); font-size:14.5px; font-weight:500;
+  letter-spacing:0.02em; color:var(--ink); }
+.readout .v em { font-style:normal; color:var(--sea); }
+
+/* Ledger preview */
+section.ledger-s { padding:110px 0 130px; }
+.station { display:flex; align-items:center; gap:18px; font-family:var(--mono);
+  font-size:11px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+.station .no { color:var(--sea); }
+.station .rule { flex:1; height:1px; background:var(--line-strong); }
+h2 { margin-top:26px; font-size:clamp(2rem,3.6vw,3rem); line-height:1.05;
+  letter-spacing:-0.028em; font-weight:700; color:var(--ink); max-width:15em; }
+.ledger { list-style:none; padding:0; margin:64px 0 0; border-top:1px solid var(--line-strong); }
+.ledger li { display:grid; grid-template-columns:150px 1fr 220px; gap:36px; align-items:start;
+  padding:46px 10px; border-bottom:1px solid var(--line-strong); transition:background 180ms ease; }
+.ledger li:hover { background:var(--card); }
+.ledger .ix { font-family:var(--mono); font-size:3rem; font-weight:300; line-height:1; color:rgba(16,29,34,0.25); }
+.ledger li:hover .ix { color:var(--terra); }
+.ledger h3 { font-size:1.65rem; font-weight:700; letter-spacing:-0.02em; color:var(--ink); }
+.ledger p { margin-top:12px; max-width:34rem; font-size:16px; color:var(--muted); }
+.ledger .tag { justify-self:end; font-family:var(--mono); font-size:10.5px; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--muted); padding-top:10px; text-align:right; }
+
+/* Load motion */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { opacity:0; transform:translateY(22px); animation:rise 900ms cubic-bezier(0.22,1,0.36,1) forwards; }
+  .rise.r2 { animation-delay:120ms; } .rise.r3 { animation-delay:240ms; } .rise.r4 { animation-delay:360ms; }
+}
+@keyframes rise { to { opacity:1; transform:none; } }
+
+/* Mockup switcher */
+.switch { position:fixed; right:18px; bottom:18px; z-index:50; display:flex; gap:2px;
+  font-family:var(--mono); font-size:11px; letter-spacing:0.1em; }
+.switch a { padding:8px 12px; background:var(--card); border:1px solid var(--line-strong);
+  color:var(--muted); text-decoration:none; }
+.switch a.on { color:#fff; background:var(--teal); border-color:var(--teal); }
+
+@media (max-width:900px) {
+  .wrap { padding:0 24px; }
+  .nav .wrap { padding:18px 24px; }
+  .nav nav a:not(.cta-sm) { display:none; }
+  .mark-bg { width:420px; right:-140px; top:auto; bottom:-40px; }
+  .sub { grid-template-columns:1fr; }
+  .actions { justify-content:flex-start; }
+  .readout { grid-template-columns:1fr 1fr; }
+  .readout > div:nth-child(n+3) { border-top:1px solid var(--line); }
+  .ledger li { grid-template-columns:70px 1fr; }
+  .ledger .tag { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
+      <b>Terenzo</b>
+    </a>
+    <nav>
+      <a href="#">What we do</a>
+      <a href="#">AI audit</a>
+      <a href="#">About</a>
+      <a class="cta-sm" href="#">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <svg class="mark-bg" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
+    <div class="wrap">
+      <p class="masthead rise"><span>Terenzo &middot; Operations and AI advisory</span><span class="r">44.0801&deg; N, 9.8846&deg; E &middot; San Terenzo, Gulf of Poets</span></p>
+      <h1 class="rise r2">We bring <span class="serif">order</span> to how your business runs.</h1>
+      <div class="sub rise r3">
+        <p class="lead">Terenzo is an AI and technology operations consulting firm. We help
+          mid-market companies, 200 to 2000 employees, turn AI into measurable operating
+          improvements, working directly with CFOs and COOs. We streamline the systems,
+          hand-offs, and decisions, and put AI to work only where it earns its place.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#">Book a call</a>
+          <a class="btn btn-ghost" href="#">See how we work</a>
+        </div>
+      </div>
+      <div class="readout rise r4">
+        <div><span class="k">Position</span><span class="v">44.0801&deg; N, 9.8846&deg; E</span></div>
+        <div><span class="k">Client range</span><span class="v"><em>200 to 2000</em> employees</span></div>
+        <div><span class="k">Reports to</span><span class="v">CFO &middot; COO</span></div>
+        <div><span class="k">Method</span><span class="v">Diagnose &middot; Prescribe &middot; Maintain</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ledger-s">
+    <div class="wrap">
+      <p class="station"><span class="no">Fig. 01</span><span class="rule"></span>What we do</p>
+      <h2>Three places where order pays for itself.</h2>
+      <ol class="ledger">
+        <li>
+          <span class="ix">01</span>
+          <div>
+            <h3>Operating systems</h3>
+            <p>We map how work actually moves through your business, then rebuild the systems
+              and hand-offs so nothing falls between teams.</p>
+          </div>
+          <span class="tag">Systems / Hand-offs</span>
+        </li>
+        <li>
+          <span class="ix">02</span>
+          <div>
+            <h3>Decisions and reporting</h3>
+            <p>Clear numbers, owned by someone, arriving on time. We fix the reporting layer so
+              leaders decide on facts, not folklore.</p>
+          </div>
+          <span class="tag">Reporting / Ownership</span>
+        </li>
+        <li>
+          <span class="ix">03</span>
+          <div>
+            <h3>AI where it earns it</h3>
+            <p>No theatre. We deploy AI on the few processes where it pays for itself, and leave
+              the rest of the org calmly alone.</p>
+          </div>
+          <span class="tag">Deployed / Measured</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<div class="switch" aria-label="Mockup switcher">
+  <a href="a.html">A</a><a class="on" href="b.html">B</a><a href="c.html">C</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Direction C: Harbor Light | Terenzo hero mockup</title>
+<meta name="robots" content="noindex" />
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --abyss:#040D12; --marine:#071820;
+  --paper:#EDF3F0; --body:#B9C9C4; --muted:#71877F;
+  --glass:#8FE0C0; --sea:#4EA699;
+  --terra:#C06A43; --terra-deep:#A1542F;
+  --line:rgba(143,224,192,0.14);
+  --sans:"Hanken Grotesk",system-ui,sans-serif; --mono:"IBM Plex Mono",monospace;
+}
+* { box-sizing:border-box; margin:0; }
+body { background:var(--abyss); color:var(--body); font-family:var(--sans);
+  font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1200px; margin:0 auto; padding:0 64px; }
+
+/* Nav */
+.nav { position:absolute; top:0; left:0; right:0; z-index:10; }
+.nav .wrap { display:flex; align-items:center; justify-content:space-between; padding-top:30px; }
+.brand { display:inline-flex; align-items:center; gap:11px; text-decoration:none; color:var(--paper); }
+.brand svg { width:27px; color:var(--glass); }
+.brand b { font-weight:700; font-size:22px; letter-spacing:-0.01em; }
+.nav nav { display:flex; align-items:center; gap:36px; }
+.nav nav a { font-family:var(--mono); font-size:11.5px; font-weight:500; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--muted); text-decoration:none; }
+.nav nav a:hover { color:var(--paper); }
+
+/* Hero: one light in the dark */
+.hero { position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
+/* The harbor light: soft beacon, slow breath, slower sweep. No lines. */
+.beacon { position:absolute; inset:0; pointer-events:none; }
+.beacon .glow { position:absolute; right:-22%; top:50%; width:1200px; height:1200px;
+  transform:translateY(-50%);
+  background:radial-gradient(circle at center,
+    rgba(143,224,192,0.26) 0%, rgba(78,166,153,0.16) 22%,
+    rgba(11,79,108,0.10) 44%, rgba(4,13,18,0) 68%); }
+.beacon .core { position:absolute; right:calc(-22% + 560px); top:50%; width:80px; height:80px;
+  transform:translate(50%,-50%); border-radius:50%;
+  background:radial-gradient(circle, rgba(237,243,240,0.9), rgba(143,224,192,0.35) 45%, rgba(143,224,192,0) 70%);
+  filter:blur(2px); }
+.beacon .sweep { position:absolute; right:-22%; top:50%; width:1200px; height:1200px;
+  transform:translateY(-50%);
+  background:conic-gradient(from 0deg,
+    rgba(143,224,192,0) 0deg, rgba(143,224,192,0.05) 12deg,
+    rgba(143,224,192,0.09) 22deg, rgba(143,224,192,0) 46deg, rgba(143,224,192,0) 360deg);
+  border-radius:50%; filter:blur(14px); }
+.horizon { position:absolute; left:0; right:0; top:50%; height:1px;
+  background:linear-gradient(90deg, rgba(143,224,192,0) 0%, rgba(143,224,192,0.14) 55%, rgba(143,224,192,0.34) 82%, rgba(143,224,192,0) 100%); }
+@media (prefers-reduced-motion: no-preference) {
+  .beacon .glow { animation:breathe 9s ease-in-out infinite; }
+  .beacon .sweep { animation:sweep 14s linear infinite; }
+}
+@keyframes breathe { 0%,100% { opacity:0.85; } 50% { opacity:1; } }
+@keyframes sweep { from { transform:translateY(-50%) rotate(0deg); } to { transform:translateY(-50%) rotate(360deg); } }
+
+.hero .content { position:relative; z-index:1; }
+.kicker { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.26em;
+  text-transform:uppercase; color:var(--sea); }
+.kicker b { color:var(--glass); font-weight:500; }
+h1 { margin-top:30px; font-size:clamp(2.9rem,5.6vw,5rem); line-height:1.04;
+  letter-spacing:-0.03em; font-weight:600; color:var(--paper); max-width:15em; }
+.lead { margin-top:30px; max-width:34rem; font-size:18.5px; line-height:1.7; color:var(--body); }
+.actions { display:flex; align-items:center; gap:22px; margin-top:44px; }
+.btn { font-family:var(--mono); font-size:13px; font-weight:600; letter-spacing:0.12em;
+  text-transform:uppercase; text-decoration:none; padding:17px 30px; }
+.btn-warm { background:var(--terra); color:#FFF4EC; }
+.btn-warm:hover { background:var(--terra-deep); }
+.link-quiet { font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--muted); text-decoration:none;
+  border-bottom:1px solid var(--line); padding-bottom:4px; }
+.link-quiet:hover { color:var(--glass); border-color:var(--glass); }
+
+/* Single-line readout at hero base */
+.readout { position:absolute; left:0; right:0; bottom:0; z-index:1;
+  border-top:1px solid var(--line); }
+.readout .wrap { display:flex; flex-wrap:wrap; gap:12px 0; justify-content:space-between;
+  padding-top:22px; padding-bottom:24px; font-family:var(--mono); font-size:11.5px;
+  font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); }
+.readout .v { color:var(--paper); margin-left:10px; letter-spacing:0.06em; }
+.readout .v em { font-style:normal; color:var(--glass); }
+
+/* Ledger preview */
+section.ledger-s { padding:120px 0 140px; background:linear-gradient(180deg, var(--abyss), var(--marine)); }
+.station { display:flex; align-items:center; gap:18px; font-family:var(--mono);
+  font-size:11px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+.station .no { color:var(--glass); }
+.station .rule { flex:1; height:1px; background:var(--line); }
+h2 { margin-top:26px; font-size:clamp(2rem,3.4vw,2.8rem); line-height:1.08;
+  letter-spacing:-0.025em; font-weight:600; color:var(--paper); max-width:16em; }
+.ledger { list-style:none; padding:0; margin:64px 0 0; border-top:1px solid var(--line); }
+.ledger li { display:grid; grid-template-columns:150px 1fr 220px; gap:36px; align-items:start;
+  padding:46px 10px; border-bottom:1px solid var(--line); transition:background 180ms ease; }
+.ledger li:hover { background:rgba(143,224,192,0.03); }
+.ledger .ix { font-family:var(--mono); font-size:3rem; font-weight:300; line-height:1; color:rgba(143,224,192,0.3); }
+.ledger li:hover .ix { color:var(--glass); }
+.ledger h3 { font-size:1.6rem; font-weight:600; letter-spacing:-0.02em; color:var(--paper); }
+.ledger p { margin-top:12px; max-width:34rem; font-size:16px; color:var(--muted); }
+.ledger .tag { justify-self:end; font-family:var(--mono); font-size:10.5px; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--muted); padding-top:10px; text-align:right; }
+
+/* Load motion */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { opacity:0; transform:translateY(20px); animation:rise 1000ms cubic-bezier(0.22,1,0.36,1) forwards; }
+  .rise.r2 { animation-delay:140ms; } .rise.r3 { animation-delay:280ms; } .rise.r4 { animation-delay:420ms; }
+}
+@keyframes rise { to { opacity:1; transform:none; } }
+
+/* Mockup switcher */
+.switch { position:fixed; right:18px; bottom:18px; z-index:50; display:flex; gap:2px;
+  font-family:var(--mono); font-size:11px; letter-spacing:0.1em; }
+.switch a { padding:8px 12px; background:rgba(4,13,18,0.85); border:1px solid var(--line);
+  color:var(--muted); text-decoration:none; }
+.switch a.on { color:var(--abyss); background:var(--glass); border-color:var(--glass); }
+
+@media (max-width:900px) {
+  .wrap { padding:0 24px; }
+  .nav nav { display:none; }
+  .beacon .glow, .beacon .sweep { right:-90%; }
+  .beacon .core { display:none; }
+  .readout .wrap { flex-direction:column; gap:10px; }
+  .ledger li { grid-template-columns:70px 1fr; }
+  .ledger .tag { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
+      <b>Terenzo</b>
+    </a>
+    <nav>
+      <a href="#">What we do</a>
+      <a href="#">AI audit</a>
+      <a href="#">About</a>
+      <a href="#">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="beacon" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="sweep"></div>
+      <div class="core"></div>
+      <div class="horizon"></div>
+    </div>
+    <div class="content wrap">
+      <p class="kicker rise"><b>Terenzo</b> &middot; Operations and AI advisory</p>
+      <h1 class="rise r2">We bring order to how your business runs.</h1>
+      <p class="lead rise r3">Terenzo is an AI and technology operations consulting firm. We help
+        mid-market companies, 200 to 2000 employees, turn AI into measurable operating
+        improvements, working directly with CFOs and COOs. We streamline the systems,
+        hand-offs, and decisions, and put AI to work only where it earns its place.</p>
+      <div class="actions rise r4">
+        <a class="btn btn-warm" href="#">Book a call</a>
+        <a class="link-quiet" href="#">See how we work</a>
+      </div>
+    </div>
+    <div class="readout rise r4">
+      <div class="wrap">
+        <span>Position<span class="v">44.0801&deg; N, 9.8846&deg; E</span></span>
+        <span>Client range<span class="v"><em>200 to 2000</em> employees</span></span>
+        <span>Reports to<span class="v">CFO &middot; COO</span></span>
+        <span>Method<span class="v">Diagnose &middot; Prescribe &middot; Maintain</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ledger-s">
+    <div class="wrap">
+      <p class="station"><span class="no">Fig. 01</span><span class="rule"></span>What we do</p>
+      <h2>Three places where order pays for itself.</h2>
+      <ol class="ledger">
+        <li>
+          <span class="ix">01</span>
+          <div>
+            <h3>Operating systems</h3>
+            <p>We map how work actually moves through your business, then rebuild the systems
+              and hand-offs so nothing falls between teams.</p>
+          </div>
+          <span class="tag">Systems / Hand-offs</span>
+        </li>
+        <li>
+          <span class="ix">02</span>
+          <div>
+            <h3>Decisions and reporting</h3>
+            <p>Clear numbers, owned by someone, arriving on time. We fix the reporting layer so
+              leaders decide on facts, not folklore.</p>
+          </div>
+          <span class="tag">Reporting / Ownership</span>
+        </li>
+        <li>
+          <span class="ix">03</span>
+          <div>
+            <h3>AI where it earns it</h3>
+            <p>No theatre. We deploy AI on the few processes where it pays for itself, and leave
+              the rest of the org calmly alone.</p>
+          </div>
+          <span class="tag">Deployed / Measured</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<div class="switch" aria-label="Mockup switcher">
+  <a href="a.html">A</a><a href="b.html">B</a><a class="on" href="c.html">C</a>
+</div>
+
+</body>
+</html>
