@@ -30,7 +30,7 @@
   --warm-hover:#8C4626;
   --beacon-a:rgba(78,166,153,0.12); --beacon-b:rgba(11,79,108,0.06);
   --horizon:rgba(16,29,34,0.18);
-  --beam:rgba(11,79,108,0.055);
+  --beam:rgba(11,79,108,0.11);
   --core-fill:var(--teal-700);
   --core-halo:rgba(78,166,153,0.45); --core-halo-wide:rgba(78,166,153,0.16);
 
