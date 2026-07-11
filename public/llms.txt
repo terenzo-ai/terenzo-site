@@ -17,6 +17,10 @@ Terenzo brings order to how a business runs. We streamline the systems, hand-off
 ## How engagements work
 Engagements start with a fixed-fee AI operations audit: a short diagnostic that maps the opportunities, ranks them by impact and effort, and returns a phased roadmap with year-one ROI. Implementation is delivered through vetted partners. A maintenance retainer keeps the work current. The model is simple: diagnose first, prescribe second, maintain third.
 
+## Proof and methodology
+- ROI methodology, published in full: https://terenzo.ai/roi-methodology.html. One auditable formula (hours saved per week x people x loaded hourly rate x 52, against implementation and maintenance cost). Every input traces to a named interview. Vendor benchmarks are never used.
+- Sample audit deliverable: https://terenzo.ai/sample-audit-deliverable.html. Built for a fictional company with every assumption and the arithmetic shown. It is a sample of the work product, not a client result.
+
 ## Founders
 - Drew Jennings, partner for operations and delivery. Background in enterprise SaaS, the AWS ecosystem, channel and alliances, with a JD and time at Avalara.
 - Gordie Flowers, partner for growth and partnerships.
