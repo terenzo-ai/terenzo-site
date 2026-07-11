@@ -15,7 +15,15 @@
       revealed.unobserve(e.target);
     });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(function (el) { revealed.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    /* Above-the-fold content shows on load; the observer handles the rest on scroll. */
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add('in');
+      el.querySelectorAll('.count').forEach(runCounter);
+    } else {
+      revealed.observe(el);
+    }
+  });
 
   /* Counters: element text is the real final value; JS only animates up to it. */
   function runCounter(el) {
@@ -61,21 +69,4 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Hero pointer parallax on the contour layers, mouse only */
-  var hero = document.querySelector('.hero');
-  if (hero && !reduced && window.matchMedia('(pointer: fine)').matches) {
-    var layers = hero.querySelectorAll('.contours .layer');
-    hero.addEventListener('mousemove', function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      layers.forEach(function (g) {
-        var d = parseFloat(g.dataset.depth || '4');
-        g.setAttribute('transform', 'translate(' + (x * d).toFixed(1) + ' ' + (y * d).toFixed(1) + ')');
-      });
-    });
-    hero.addEventListener('mouseleave', function () {
-      layers.forEach(function (g) { g.removeAttribute('transform'); });
-    });
-  }
 })();

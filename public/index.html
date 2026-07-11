@@ -56,43 +56,27 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
 </header>
 
 <main>
-  <!-- Hero: the chart table -->
+  <!-- Hero: one light in the dark -->
   <section id="top" class="hero">
-    <div class="contour-field" aria-hidden="true">
-      <svg class="contours" viewBox="0 0 900 760" preserveAspectRatio="xMaxYMid slice">
-        <g class="layer" data-depth="3"><g class="drift-a">
-          <path class="c1" pathLength="1" d="M -40 60 C 140 20, 260 130, 430 96 C 590 64, 720 10, 950 70" />
-          <path class="c2" pathLength="1" d="M -40 140 C 150 96, 270 210, 440 170 C 600 132, 730 84, 950 148" />
-        </g></g>
-        <g class="layer" data-depth="6"><g class="drift-b">
-          <path class="c3" pathLength="1" d="M -40 230 C 160 180, 280 300, 450 252 C 610 208, 740 168, 950 236" />
-          <path class="c4 battlement" pathLength="1" d="M -40 330 L 150 330 L 150 302 L 205 302 L 205 330 L 260 330 L 260 302 L 315 302 L 315 330 L 370 330 L 370 302 L 425 302 L 425 330 L 950 330" />
-        </g></g>
-        <g class="layer" data-depth="10"><g class="drift-c">
-          <path class="c5" pathLength="1" d="M -40 420 C 170 372, 300 480, 470 440 C 630 402, 760 356, 950 424" />
-          <path class="c6" pathLength="1" d="M -40 520 C 180 468, 310 590, 480 540 C 640 494, 770 452, 950 528" />
-          <path class="c7" pathLength="1" d="M -40 620 C 190 566, 320 690, 490 640 C 650 594, 780 556, 950 632" />
-        </g></g>
-      </svg>
+    <div class="beacon" aria-hidden="true">
+      <div class="glow"></div>
+      <div class="sweep"></div>
+      <div class="core"></div>
+      <div class="horizon"></div>
     </div>
-    <p class="hero-coord" aria-hidden="true">44.0801&deg; N &middot; 9.8846&deg; E &middot; Gulf of Poets</p>
-    <div class="wrap">
-      <p class="station reveal"><span class="no">Terenzo</span><span class="rule"></span>Operations and AI advisory</p>
-      <h1><span class="hero-line"><span>We bring order</span></span><span class="hero-line"><span>to how your</span></span><span class="hero-line"><span class="hl">business runs.</span></span></h1>
-      <p class="lead reveal d1">Terenzo is an AI and technology operations consulting firm. We help
+    <div class="content wrap">
+      <p class="kicker reveal"><b>Terenzo</b> &middot; Operations and AI advisory</p>
+      <h1 class="reveal d1">We bring order to how your business runs.</h1>
+      <p class="lead reveal d2">Terenzo is an AI and technology operations consulting firm. We help
         mid-market companies, 200 to 2000 employees, turn AI into measurable operating
         improvements, working directly with CFOs and COOs. We streamline the systems,
         hand-offs, and decisions, and put AI to work only where it earns its place.</p>
-      <div class="actions reveal d2">
+      <div class="actions reveal d3">
         <a class="btn btn-primary" href="#contact">Book a call</a>
-        <a class="btn btn-secondary" href="#what">See how we work</a>
+        <a class="link-quiet" href="#what">See how we work</a>
       </div>
       <p class="cred reveal d3">Built by operators from the enterprise SaaS, AWS, Microsoft, and Salesforce world.</p>
-      <aside class="promise ticked reveal d3">
-        <p class="kicker">The promise</p>
-        <p class="line">Operational clarity,<br />built to last.</p>
-      </aside>
-      <div class="readout reveal" role="presentation">
+      <div class="readout reveal d3" role="presentation">
         <div><span class="k">Position</span><span class="v">44.0801&deg; N, 9.8846&deg; E</span></div>
         <div><span class="k">Client range</span><span class="v"><span class="count">200</span> to <span class="count">2000</span> employees</span></div>
         <div><span class="k">Reports to</span><span class="v">CFO &middot; COO</span></div>
@@ -143,7 +127,7 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
   <!-- Who it's for: the chart panel -->
   <section id="who" class="panel-dark">
     <div class="wrap">
-      <div class="inner ticked reveal">
+      <div class="inner reveal">
         <svg class="watermark" viewBox="0 0 70 44" fill="currentColor" aria-hidden="true"><path d="M10 38 L10 12 L21.79 12 L21.79 22 L29.10 22 L29.10 12 L40.90 12 L40.90 22 L48.21 22 L48.21 12 L60 12 L60 38 Z"></path></svg>
         <div>
           <p class="station"><span class="no">Fig. 02</span><span class="rule"></span>Who it's for</p>
@@ -167,7 +151,7 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
       <p class="station reveal"><span class="no">Fig. 03</span><span class="rule"></span>Founders</p>
       <h2 class="reveal d1">Two partners, on the hook with you.</h2>
       <div class="people">
-        <article class="person ticked reveal">
+        <article class="person reveal">
           <img class="avatar" src="assets/drew-jennings.jpg" width="76" height="76" alt="Drew Jennings" />
           <div>
             <p class="name">Drew Jennings</p>
@@ -178,7 +162,7 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
             <a class="social" href="https://www.linkedin.com/in/drewje/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </article>
-        <article class="person ticked reveal d1">
+        <article class="person reveal d1">
           <img class="avatar" src="assets/gordie-flowers.jpg" width="76" height="76" alt="Gordie Flowers" />
           <div>
             <p class="name">Gordie Flowers</p>
@@ -193,10 +177,9 @@ function toggleTheme(){var t=document.documentElement.dataset.theme==='dark'?'li
   </section>
 
   <!-- Photo band: the promise over the San Terenzo castello -->
-  <section class="photo-band ticked reveal">
+  <section class="photo-band reveal">
     <img src="assets/castello-san-terenzo-best.jpg" data-parallax alt="The San Terenzo castello at dusk on the Ligurian coast" />
     <div class="overlay" aria-hidden="true"></div>
-    <div class="gridlines" aria-hidden="true"></div>
     <div class="content">
       <p class="station"><span class="no">Fig. 04</span><span class="rule"></span>The promise</p>
       <h2>Operational clarity, built to last.</h2>
