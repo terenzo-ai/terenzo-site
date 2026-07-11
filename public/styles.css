@@ -167,12 +167,11 @@ section { padding-top:100px; padding-bottom:100px; }
   border-radius:50%;
   background:radial-gradient(circle at center,
     var(--beacon-a) 0%, var(--beacon-b) 24%, transparent 62%); }
-/* Two opposed beams, crisp direction, fading with distance from the lamp. */
+/* One beam, crisp direction, fading with distance from the lamp. */
 .beacon .sweep { position:absolute; width:1400px; height:1400px; left:-700px; top:-700px;
   border-radius:50%; filter:blur(3px);
   background:conic-gradient(from 20deg,
-    transparent 0deg, var(--beam) 7deg, transparent 16deg,
-    transparent 178deg, var(--beam) 187deg, transparent 196deg, transparent 360deg);
+    transparent 0deg, var(--beam) 11deg, transparent 26deg, transparent 360deg);
   -webkit-mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%);
   mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%); }
 .beacon .core { position:absolute; width:10px; height:10px; left:-5px; top:-5px;
