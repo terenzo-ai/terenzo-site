@@ -28,8 +28,11 @@
   --ann-accent:#3E8A7C;          /* annotation accent: indices, readout values */
   --warm:var(--terracotta-600);  /* the one warm accent (CTA, pricing, origin) */
   --warm-hover:#8C4626;
-  --beacon-a:rgba(78,166,153,0.10); --beacon-b:rgba(11,79,108,0.05);
+  --beacon-a:rgba(78,166,153,0.12); --beacon-b:rgba(11,79,108,0.06);
   --horizon:rgba(16,29,34,0.18);
+  --beam:rgba(11,79,108,0.055);
+  --core-fill:var(--teal-700);
+  --core-halo:rgba(78,166,153,0.45); --core-halo-wide:rgba(78,166,153,0.16);
 
   --font-sans:"Hanken Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
@@ -52,6 +55,9 @@
   --warm-hover:var(--terracotta-600);
   --beacon-a:rgba(143,224,192,0.26); --beacon-b:rgba(78,166,153,0.16);
   --horizon:rgba(143,224,192,0.30);
+  --beam:rgba(143,224,192,0.10);
+  --core-fill:#F2FBF7;
+  --core-halo:rgba(143,224,192,0.55); --core-halo-wide:rgba(143,224,192,0.20);
 }
 
 /* ---------- Base ---------- */
@@ -142,7 +148,7 @@ a { color:var(--link); text-underline-offset:2px; }
   .beacon .sweep { animation:sweep 14s linear infinite; }
 }
 @keyframes breathe { 0%,100% { opacity:0.85; } 50% { opacity:1; } }
-@keyframes sweep { from { transform:translateY(-50%) rotate(0deg); } to { transform:translateY(-50%) rotate(360deg); } }
+@keyframes sweep { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
 
 /* ---------- Sections ---------- */
 section { padding-top:100px; padding-bottom:100px; }
@@ -151,22 +157,27 @@ section { padding-top:100px; padding-bottom:100px; }
 /* ---------- Hero: one light in the dark ---------- */
 .hero { position:relative; min-height:calc(100vh - 71px); display:flex; flex-direction:column;
   justify-content:center; overflow:hidden; padding-top:0; padding-bottom:0; }
-/* The harbor beacon: soft glow, slow breath, slower sweep. No lines, no drawing. */
+/* The harbor beacon. Everything (glow, rotating beams, lamp core) hangs off one
+   zero-size anchor, .lamp, so all layers share an exact center and the sweep
+   rotates around the bright point. Present in both themes: white lamp at night,
+   dark harbor marker with a sea-glass glint by day. */
 .beacon { position:absolute; inset:0; pointer-events:none; }
-.beacon .glow { position:absolute; right:-22%; top:50%; width:1200px; height:1200px;
-  transform:translateY(-50%);
+.beacon .lamp { position:absolute; right:16%; top:50%; width:0; height:0; }
+.beacon .glow { position:absolute; width:1200px; height:1200px; left:-600px; top:-600px;
+  border-radius:50%;
   background:radial-gradient(circle at center,
-    var(--beacon-a) 0%, var(--beacon-b) 22%, rgba(11,79,108,0.06) 44%, transparent 68%); }
-.beacon .sweep { position:absolute; right:-22%; top:50%; width:1200px; height:1200px;
-  transform:translateY(-50%); border-radius:50%; filter:blur(14px);
-  background:conic-gradient(from 0deg,
-    transparent 0deg, rgba(143,224,192,0.05) 12deg,
-    rgba(143,224,192,0.09) 22deg, transparent 46deg, transparent 360deg); }
-:root:not([data-theme="dark"]) .beacon .sweep { display:none; }
-.beacon .core { position:absolute; right:calc(-22% + 560px); top:50%; width:80px; height:80px;
-  transform:translate(50%,-50%); border-radius:50%; filter:blur(2px);
-  background:radial-gradient(circle, rgba(237,243,240,0.9), rgba(143,224,192,0.35) 45%, transparent 70%); }
-:root:not([data-theme="dark"]) .beacon .core { display:none; }
+    var(--beacon-a) 0%, var(--beacon-b) 24%, transparent 62%); }
+/* Two opposed beams, crisp direction, fading with distance from the lamp. */
+.beacon .sweep { position:absolute; width:1400px; height:1400px; left:-700px; top:-700px;
+  border-radius:50%; filter:blur(3px);
+  background:conic-gradient(from 20deg,
+    transparent 0deg, var(--beam) 7deg, transparent 16deg,
+    transparent 178deg, var(--beam) 187deg, transparent 196deg, transparent 360deg);
+  -webkit-mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%);
+  mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%); }
+.beacon .core { position:absolute; width:10px; height:10px; left:-5px; top:-5px;
+  border-radius:50%; background:var(--core-fill);
+  box-shadow:0 0 10px 3px var(--core-halo), 0 0 70px 26px var(--core-halo-wide); }
 .beacon .horizon { position:absolute; left:0; right:0; top:50%; height:1px;
   background:linear-gradient(90deg, transparent 0%, var(--border-subtle) 55%, var(--horizon) 82%, transparent 100%); }
 
@@ -357,8 +368,7 @@ section { padding-top:100px; padding-bottom:100px; }
   .hero { min-height:0; }
   .hero .content { padding-top:72px; }
   .hero .readout { margin-top:64px; }
-  .beacon .glow, .beacon .sweep { right:-90%; }
-  .beacon .core { display:none; }
+  .beacon .lamp { right:4%; transform:scale(0.6); }
   .readout { grid-template-columns:1fr 1fr; }
   .readout > div { padding:16px 16px 16px 0; }
   .readout > div + div { padding-left:0; border-left:none; }
