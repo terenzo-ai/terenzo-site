@@ -208,7 +208,18 @@ section { padding-top:100px; padding-bottom:100px; }
   padding-top:4px; letter-spacing:0.1em; }
 .fits .t { font-size:17px; line-height:1.5; }
 
-/* ---------- Founders ---------- */
+/* ---------- Founders roster (homepage): compressed rows, full bios on About ---------- */
+.founders { list-style:none; margin:56px 0 0; padding:0; border-top:1px solid var(--border-subtle); }
+.founders li { display:grid; grid-template-columns:64px 1fr auto; gap:26px; align-items:center;
+  padding:26px 10px; border-bottom:1px solid var(--border-subtle); }
+.founders .avatar { width:64px; height:64px; }
+.founders .name { font-weight:600; font-size:19px; color:var(--text-strong); letter-spacing:-0.01em; }
+.founders .role { font-family:var(--font-mono); font-weight:500; font-size:11px; letter-spacing:0.14em;
+  text-transform:uppercase; color:var(--ann-accent); margin-top:5px; }
+.founders .creds { justify-self:end; text-align:right; }
+.founders-more { display:inline-block; margin-top:32px; }
+
+/* ---------- Founders (About page cards) ---------- */
 .people { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px; }
 .person { background:var(--surface-card); border:1px solid var(--border-subtle);
   padding:34px; display:flex; gap:22px; align-items:flex-start; }
@@ -341,6 +352,8 @@ section { padding-top:100px; padding-bottom:100px; }
   .ledger .tag { display:none; }
   .panel-dark .inner { grid-template-columns:1fr; padding:48px 28px; gap:40px; }
   .people, .foot .top { grid-template-columns:1fr; }
+  .founders li { grid-template-columns:64px 1fr; }
+  .founders .creds { grid-column:2; justify-self:start; text-align:left; }
   .photo-band .content { padding:56px 28px; }
   .origin { grid-template-columns:1fr; }
   .origin .note { padding:28px 24px; }
