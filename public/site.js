@@ -2,6 +2,9 @@
    depends on this file: without it the page is fully visible and static. */
 (function () {
   'use strict';
+  /* Stamp .js only when the reveal machinery can actually run; otherwise the
+     CSS never hides anything and the page stays fully visible. */
+  if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js');
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -37,7 +40,8 @@
       if (start === null) start = t;
       var p = Math.min((t - start) / dur, 1);
       var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = text.replace(/[0-9][0-9,.]*/, String(Math.round(target * eased)));
+      var n = Math.round(target * eased);
+      el.textContent = text.replace(/[0-9][0-9,.]*/, text.indexOf(',') > -1 ? n.toLocaleString('en-US') : String(n));
       if (p < 1) requestAnimationFrame(frame); else el.textContent = text;
     }
     requestAnimationFrame(frame);
