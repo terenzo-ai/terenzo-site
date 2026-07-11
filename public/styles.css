@@ -116,9 +116,20 @@ a { color:var(--link); text-underline-offset:2px; }
 
   .beacon .glow { animation:breathe 9s ease-in-out infinite; }
   .beacon .sweep { animation:sweep 14s linear infinite; }
+  /* Fl(3) W 15s: the real characteristic of the San Venerio light on Tino island,
+     the lighthouse visible from San Terenzo's shore. Three flashes, 15-second period. */
+  .beacon .core { animation:flash-3-15 15s linear infinite; }
+  .beacon .reflection { animation:ripple 7s linear infinite, flash-3-15 15s linear infinite; }
 }
 @keyframes breathe { 0%,100% { opacity:0.85; } 50% { opacity:1; } }
 @keyframes sweep { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+@keyframes flash-3-15 {
+  0%,100% { opacity:0.7; }
+  2%,5% { opacity:1; } 8% { opacity:0.7; }
+  12.5%,15.5% { opacity:1; } 18.5% { opacity:0.7; }
+  23%,26% { opacity:1; } 29% { opacity:0.7; }
+}
+@keyframes ripple { from { background-position:0 0, 0 0; } to { background-position:0 42px, 0 0; } }
 
 /* ---------- Sections ---------- */
 section { padding-top:100px; padding-bottom:100px; }
@@ -140,13 +151,24 @@ section { padding-top:100px; padding-bottom:100px; }
 /* One beam, crisp direction, fading with distance from the lamp. */
 .beacon .sweep { position:absolute; width:1400px; height:1400px; left:-700px; top:-700px;
   border-radius:50%; filter:blur(3px);
-  background:conic-gradient(from 20deg,
+  /* Start the beam at the 7:30 position so it is visible immediately on mobile,
+     where the lamp sits at the right edge and only the down-left arc is on screen. */
+  background:conic-gradient(from 185deg,
     transparent 0deg, var(--beam) 11deg, transparent 26deg, transparent 360deg);
   -webkit-mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%);
   mask-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.9) 30%, transparent 72%); }
 .beacon .core { position:absolute; width:10px; height:10px; left:-5px; top:-5px;
   border-radius:50%; background:var(--core-fill);
   box-shadow:0 0 10px 3px var(--core-halo), 0 0 70px 26px var(--core-halo-wide); }
+/* Water: the lamp's reflection on the harbor, a faint column of light below the
+   horizon that drifts like ripples and flashes in step with the lamp. */
+.beacon .reflection { position:absolute; left:-60px; top:3px; width:120px; height:44vh;
+  background:
+    repeating-linear-gradient(180deg, rgba(143,224,192,0.07) 0 1px, transparent 1px 6px),
+    linear-gradient(180deg, var(--beacon-b) 0%, transparent 70%);
+  filter:blur(1px); opacity:0.7;
+  -webkit-mask-image:radial-gradient(ellipse 50% 90% at 50% 0%, rgba(0,0,0,0.9), transparent 75%);
+  mask-image:radial-gradient(ellipse 50% 90% at 50% 0%, rgba(0,0,0,0.9), transparent 75%); }
 .beacon .horizon { position:absolute; left:0; right:0; top:50%; height:1px;
   background:linear-gradient(90deg, transparent 0%, var(--border-subtle) 55%, var(--horizon) 82%, transparent 100%); }
 
