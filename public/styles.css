@@ -3,7 +3,7 @@
    instrument annotations, quiet hairline structure, terracotta as the single warm
    accent. Single theme: the harbor at night.
    Tokens mirrored from brand/design-system so the deployed site is self-contained. */
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+/* Fonts load via <link> tags in each page head (faster than @import: no CSS chain). */
 
 /* ---------- Tokens ---------- */
 :root {

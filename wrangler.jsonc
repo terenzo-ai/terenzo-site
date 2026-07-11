@@ -4,6 +4,8 @@
   "name": "terenzo-site",
   "compatibility_date": "2025-06-01",
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    // Serve public/404.html (branded, noindex) for any path that doesn't exist.
+    "not_found_handling": "404-page"
   }
 }
